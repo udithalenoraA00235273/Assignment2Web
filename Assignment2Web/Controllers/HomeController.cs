@@ -1,4 +1,5 @@
 ﻿using Assignment2Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -23,6 +24,7 @@ namespace Assignment2Web.Controllers
             return View();
         }
 
+       
         public IActionResult Privacy()
         {
             return View();
@@ -32,6 +34,12 @@ namespace Assignment2Web.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [Authorize]
+        public IActionResult Secret()
+        {
+            return View();
         }
     }
 }
